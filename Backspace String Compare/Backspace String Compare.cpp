@@ -2,10 +2,49 @@
 //
 
 #include <iostream>
+#include <string>
+using namespace std;
+class Solution {
+public:
+	bool backspaceCompare(string S, string T) 
+	{
+		int nSlen = S.length();
+		int nTlen = T.length();
+		string sS = "", sT = "";
+		int i, j;
+		for (i = 0, j = 0; i < nSlen; i++)
+		{
+			if (S[i] != '#')
+			{
+				sS.push_back(S[i]);
+			}
+			else
+			{
+				if (!sS.empty())
+					sS.pop_back();
+			}
+		}
+		for (j = 0; j < nTlen;j++)
+		{
+			if (T[j] != '#')
+			{
+				sT.push_back(T[j]);
+			}
+			else
+			{
+				if (!sT.empty())
+					sT.pop_back();
+			}
+		}
+		return sS == sT;
+	}
+};
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	Solution slnObj;
+	
+    std::cout << slnObj.backspaceCompare("xywrrmp","xywrrmu#p");
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
